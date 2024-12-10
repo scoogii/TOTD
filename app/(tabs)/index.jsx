@@ -3,7 +3,8 @@ import {
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
-  View,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useState } from "react";
 
@@ -12,7 +13,10 @@ const Index = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
         <TextInput
           editable={true}
           multiline={true}
@@ -23,9 +27,13 @@ const Index = () => {
           onChangeText={(newText) => {
             setText(newText);
           }}
+          onEndEditing={() => {
+            setText(text.trim());
+          }}
           value={text}
+          returnKeyType="done"
         />
-      </View>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };
@@ -36,12 +44,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   text: {
     textAlign: "center",
     color: "#FFF",
     fontFamily: "Inter_900Black",
     fontSize: 60,
+    height: "calc(100vh - 180)",
   },
 });
 
