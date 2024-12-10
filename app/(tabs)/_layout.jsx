@@ -6,23 +6,33 @@ const TabLayout = () => {
     <Tabs
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#141a27",
+          backgroundColor: "#000",
+          borderBottomWidth: 1,
         },
         headerShadowVisible: false,
         headerTintColor: "#fff",
-        tabBarActiveTintColor: "#ffb56b",
+        tabBarActiveTintColor: "#FFF",
         tabBarStyle: {
-          backgroundColor: "#141a27",
-          borderTopWidth: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#000",
+          borderTopWidth: 1,
+          height: 110,
         },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "TOTD",
+          title: "",
           tabBarIcon: ({ color }) => (
-            <FontAwesome6 name="calendar-day" color={color} size={24} />
+            <FontAwesome6
+              name="calendar-day"
+              color={color}
+              size={32}
+              style={{ marginTop: 32, height: 40 }}
+            />
           ),
           headerTitle: "Thought of the Day",
         }}
@@ -30,9 +40,14 @@ const TabLayout = () => {
       <Tabs.Screen
         name="calendar"
         options={{
-          title: "Overview",
+          title: "",
           tabBarIcon: ({ color }) => (
-            <FontAwesome6 name="calendar-days" color={color} size={24} />
+            <FontAwesome6
+              name="calendar-days"
+              color={color}
+              size={32}
+              style={{ marginTop: 32, height: 40 }}
+            />
           ),
           headerTitle: "Overview",
         }}

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 const Index = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>TOTD</Text>
+      <Text style={styles.text}>What's on your mind? 💭</Text>
     </View>
   );
 };
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#121621",
+    backgroundColor: "#000",
   },
   text: {
     color: "#FFF",
