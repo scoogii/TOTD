@@ -3,10 +3,13 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { Tabs } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
+import moment from "moment";
 
 SplashScreen.preventAutoHideAsync();
 
 const TabLayout = () => {
+  const date = moment(new Date()).format("DD/MM/YYYY");
+
   const [loaded, error] = useFonts({
     Inter_900Black,
   });
@@ -51,7 +54,7 @@ const TabLayout = () => {
               style={{ marginTop: 30, height: 40 }}
             />
           ),
-          headerTitle: "Thought of the Day",
+          headerTitle: `Thought of the Day - ${date}`,
         }}
       />
       <Tabs.Screen

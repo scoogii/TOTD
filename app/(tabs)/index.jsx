@@ -21,7 +21,7 @@ const Index = () => {
           editable={true}
           multiline={true}
           numberOfLines={4}
-          maxLength={60}
+          maxLength={50}
           placeholder="What's on your mind? 💭"
           style={styles.text}
           onChangeText={(newText) => {
@@ -31,7 +31,6 @@ const Index = () => {
             setText(text.trim());
           }}
           value={text}
-          returnKeyType="done"
         />
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
