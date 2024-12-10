@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 const Calendar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Calendar</Text>
+      <Text style={{ fontFamily: "Inter_900Black" }}>Calendar</Text>
     </View>
   );
 };
@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#FFF",
+    fontFamily: "Inter_900Black",
+    fontSize: 32,
   },
 });
 

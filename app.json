@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TOTD",
-    "slug": "TOTD",
+    "slug": "totd",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -32,10 +32,20 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "431c66eb-92dd-4a72-9b8b-2e9263ec3d87"
+      }
+    },
+    "owner": "scoogii"
   }
 }

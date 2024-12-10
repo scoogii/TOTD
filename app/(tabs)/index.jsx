@@ -1,10 +1,32 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
+import { useState } from "react";
 
 const Index = () => {
+  const [text, setText] = useState("");
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>What's on your mind? 💭</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <TextInput
+          editable={true}
+          multiline={true}
+          numberOfLines={4}
+          maxLength={60}
+          placeholder="What's on your mind? 💭"
+          style={styles.text}
+          onChangeText={(newText) => {
+            setText(newText);
+          }}
+          value={text}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -16,7 +38,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   text: {
+    textAlign: "center",
     color: "#FFF",
+    fontFamily: "Inter_900Black",
+    fontSize: 60,
   },
 });
 

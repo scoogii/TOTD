@@ -1,7 +1,26 @@
+import { Inter_900Black, useFonts } from "@expo-google-fonts/inter";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 import { Tabs } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
 
+SplashScreen.preventAutoHideAsync();
+
 const TabLayout = () => {
+  const [loaded, error] = useFonts({
+    Inter_900Black,
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <Tabs
       screenOptions={{
@@ -13,12 +32,8 @@ const TabLayout = () => {
         headerTintColor: "#fff",
         tabBarActiveTintColor: "#FFF",
         tabBarStyle: {
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#000",
           borderTopWidth: 1,
-          height: 110,
+          backgroundColor: "#000",
         },
       }}
     >
@@ -31,7 +46,7 @@ const TabLayout = () => {
               name="calendar-day"
               color={color}
               size={32}
-              style={{ marginTop: 32, height: 40 }}
+              style={{ marginTop: 30, height: 40 }}
             />
           ),
           headerTitle: "Thought of the Day",
@@ -46,7 +61,7 @@ const TabLayout = () => {
               name="calendar-days"
               color={color}
               size={32}
-              style={{ marginTop: 32, height: 40 }}
+              style={{ marginTop: 30, height: 40 }}
             />
           ),
           headerTitle: "Overview",
