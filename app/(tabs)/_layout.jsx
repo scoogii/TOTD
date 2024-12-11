@@ -9,7 +9,7 @@ SplashScreen.preventAutoHideAsync();
 
 const TabLayout = () => {
   //////////// STATE VARIABLES ////////////
-  const date = moment(new Date()).format("YYYY-MM-DD");
+  const date = moment(new Date()).format("DD/MM/YYYY");
 
   const [loaded, error] = useFonts({
     Inter_700Bold,

@@ -1,15 +1,15 @@
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { CalendarList } from "react-native-calendars";
 
 const Overview = () => {
   //////////// STATE VARIABLES ////////////
-  const [days, setDays] = useState([]);
+  const [dates, setDates] = useState([]);
 
   //////////// FETCH ////////////
-  const fetchDays = async () => {
-    const response = await fetch("http://localhost:3000/days", {
+  const fetchDates = async () => {
+    const response = await fetch("http://localhost:3000/dates", {
       method: "GET",
     });
 
@@ -20,13 +20,21 @@ const Overview = () => {
       return;
     }
 
-    setDays(data);
+    let markedDates = {};
+    data.map((item) => {
+      markedDates[item.date] = {
+        selected: true,
+        selectedColor: "#81add6",
+      };
+    });
+
+    setDates(markedDates);
   };
 
   //////////// USE EFFECTS ////////////
   useFocusEffect(
     useCallback(() => {
-      fetchDays();
+      fetchDates();
     }, []),
   );
 
@@ -40,7 +48,7 @@ const Overview = () => {
           dayTextColor: "#FFF",
           todayTextColor: "#81add6",
           textDayHeaderFontSize: 14,
-          textDayFontSize: 18,
+          textDayFontSize: 16,
           textMonthFontSize: 24,
           textDayFontWeight: "bold",
           textSectionTitleColor: "#81add6",
@@ -49,20 +57,7 @@ const Overview = () => {
         onDayPress={(day) => {
           console.log(day);
         }}
-        markedDates={{
-          "2024-12-10": {
-            selected: true,
-            selectedColor: "#81add6",
-          },
-          "2024-12-09": {
-            selected: true,
-            selectedColor: "#81add6",
-          },
-          "2024-12-08": {
-            selected: true,
-            selectedColor: "#81add6",
-          },
-        }}
+        markedDates={dates}
       />
     </View>
   );
