@@ -1,4 +1,4 @@
-import { Inter_900Black, useFonts } from "@expo-google-fonts/inter";
+import { Inter_700Bold, useFonts } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { Tabs } from "expo-router";
@@ -11,7 +11,7 @@ const TabLayout = () => {
   const date = moment(new Date()).format("DD/MM/YYYY");
 
   const [loaded, error] = useFonts({
-    Inter_900Black,
+    Inter_700Bold,
   });
 
   useEffect(() => {

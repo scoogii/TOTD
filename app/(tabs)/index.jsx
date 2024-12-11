@@ -11,6 +11,12 @@ import { useState } from "react";
 const Index = () => {
   const [text, setText] = useState("");
 
+  const handleKeyDown = (e) => {
+    if (e.nativeEvent.key === "Enter") {
+      Keyboard.dismiss();
+    }
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
@@ -18,8 +24,8 @@ const Index = () => {
         style={styles.container}
       >
         <TextInput
-          editable={true}
-          multiline={true}
+          multiline
+          spellCheck={false}
           numberOfLines={4}
           maxLength={50}
           placeholder="What's on your mind? 💭"
@@ -30,7 +36,11 @@ const Index = () => {
           onEndEditing={() => {
             setText(text.trim());
           }}
+          onKeyPress={(e) => {
+            handleKeyDown(e);
+          }}
           value={text}
+          returnKeyType="done"
         />
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
@@ -51,7 +61,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "#FFF",
-    fontFamily: "Inter_900Black",
+    fontFamily: "Inter_700Bold",
     fontSize: 60,
     height: "calc(100vh - 180)",
   },
