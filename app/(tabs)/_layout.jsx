@@ -8,12 +8,14 @@ import moment from "moment";
 SplashScreen.preventAutoHideAsync();
 
 const TabLayout = () => {
-  const date = moment(new Date()).format("DD/MM/YYYY");
+  //////////// STATE VARIABLES ////////////
+  const date = moment(new Date()).format("YYYY-MM-DD");
 
   const [loaded, error] = useFonts({
     Inter_700Bold,
   });
 
+  //////////// USE EFFECTS ////////////
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
@@ -57,8 +59,9 @@ const TabLayout = () => {
           headerTitle: `Thought of the Day - ${date}`,
         }}
       />
+
       <Tabs.Screen
-        name="calendar"
+        name="overview"
         options={{
           title: "",
           tabBarIcon: ({ color }) => (

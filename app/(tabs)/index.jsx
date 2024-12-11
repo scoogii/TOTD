@@ -9,8 +9,10 @@ import {
 import { useState } from "react";
 
 const Index = () => {
+  //////////// STATE VARIABLES ////////////
   const [text, setText] = useState("");
 
+  //////////// HANDLERS ////////////
   const handleKeyDown = (e) => {
     if (e.nativeEvent.key === "Enter") {
       Keyboard.dismiss();
