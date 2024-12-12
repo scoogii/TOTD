@@ -1,9 +1,9 @@
-import { useFocusEffect } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { CalendarList } from "react-native-calendars";
 
-const Overview = () => {
+const OverviewIndex = () => {
   //////////// STATE VARIABLES ////////////
   const [dates, setDates] = useState([]);
 
@@ -31,6 +31,13 @@ const Overview = () => {
     setDates(markedDates);
   };
 
+  //////////// HANDLERS ////////////
+  const handleDayPress = (date) => {
+    if (Object.hasOwn(dates, date)) {
+      router.push(`./${date}`, { relativeToDirectory: true });
+    }
+  };
+
   //////////// USE EFFECTS ////////////
   useFocusEffect(
     useCallback(() => {
@@ -41,10 +48,13 @@ const Overview = () => {
   return (
     <View style={styles.container}>
       <CalendarList
+        style={{
+          paddingTop: 90,
+        }}
         theme={{
           calendarBackground: "#000",
           monthTextColor: "#FFF",
-          textMonthFontFamily: "Inter_700Bold",
+          textMonthFontFamily: "Inter_600SemiBold",
           dayTextColor: "#FFF",
           todayTextColor: "#81add6",
           textDayHeaderFontSize: 14,
@@ -55,7 +65,7 @@ const Overview = () => {
         }}
         futureScrollRange={0}
         onDayPress={(day) => {
-          console.log(day);
+          handleDayPress(day.dateString);
         }}
         markedDates={dates}
       />
@@ -68,13 +78,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#000",
+    backgroundColor: "#transparent",
   },
   text: {
     color: "#FFF",
-    fontFamily: "Inter_700Bold",
+    fontFamily: "Inter_600SemiBold",
     fontSize: 32,
   },
 });
 
-export default Overview;
+export default OverviewIndex;

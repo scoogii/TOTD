@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "#FFF",
-    fontFamily: "Inter_700Bold",
+    fontFamily: "Inter_600SemiBold",
     fontSize: 60,
     height: "calc(100vh - 180)",
   },

@@ -1,4 +1,4 @@
-import { Inter_700Bold, useFonts } from "@expo-google-fonts/inter";
+import { Inter_600SemiBold, useFonts } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { Tabs } from "expo-router";
@@ -12,7 +12,7 @@ const TabLayout = () => {
   const date = moment(new Date()).format("DD/MM/YYYY");
 
   const [loaded, error] = useFonts({
-    Inter_700Bold,
+    Inter_600SemiBold,
   });
 
   //////////// USE EFFECTS ////////////
@@ -56,7 +56,7 @@ const TabLayout = () => {
               style={{ marginTop: 30, height: 40 }}
             />
           ),
-          headerTitle: `Thought of the Day - ${date}`,
+          headerTitle: `Thought of the Day · ${date}`,
         }}
       />
 
@@ -72,7 +72,7 @@ const TabLayout = () => {
               style={{ marginTop: 30, height: 40 }}
             />
           ),
-          headerTitle: "Overview",
+          headerShown: false,
         }}
       />
     </Tabs>
