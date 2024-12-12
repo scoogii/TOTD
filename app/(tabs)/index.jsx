@@ -7,6 +7,7 @@ import {
   Platform,
 } from "react-native";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 
 const Index = () => {
   //////////// STATE VARIABLES ////////////
@@ -25,6 +26,8 @@ const Index = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
+        <StatusBar style="light" />
+
         <TextInput
           multiline
           spellCheck={false}

@@ -1,10 +1,40 @@
+import { Stack, usePathname } from "expo-router";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const DatePreview = ({ date }) => {
+const DatePreview = () => {
+  const date = usePathname().split("/")[2];
+
+  //////////// STATE VARIABLES ////////////
+  const [day, setDay] = useState({});
+
+  //////////// FETCH ////////////
+  const getDay = async () => {
+    const response = await fetch(`http://localhost:3000/day/${date}`, {
+      method: "GET",
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+
+    setDay(data[0]);
+  };
+
+  //////////// USE EFFECTS ////////////
+  useEffect(() => {
+    getDay();
+  }, []);
+
   return (
     <>
+      <Stack.Screen options={{ headerTitle: date, headerShown: true }} />
+
       <View style={styles.container}>
-        <Text style={styles.text}>{date}</Text>
+        <Text style={styles.text}>{day.thought}</Text>
       </View>
     </>
   );
