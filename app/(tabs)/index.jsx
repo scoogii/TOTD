@@ -131,7 +131,7 @@ const Index = () => {
             multiline
             spellCheck={false}
             maxLength={60}
-            placeholder={today ? today.thought : "What's on your mind? 💭"}
+            placeholder={"What's on your mind? 💭"}
             style={styles.text}
             onChangeText={(newText) => {
               setText(newText);
@@ -142,7 +142,7 @@ const Index = () => {
             onKeyPress={(e) => {
               handleKeyDown(e);
             }}
-            value={text}
+            value={today ? today.thought : text}
             returnKeyType="done"
           />
         </KeyboardAvoidingView>
