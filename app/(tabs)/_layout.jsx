@@ -31,14 +31,14 @@ const TabLayout = () => {
       screenOptions={{
         headerStyle: {
           backgroundColor: "#000",
-          borderBottomWidth: 2,
+          borderBottomWidth: 1,
           height: 90,
         },
         headerShadowVisible: false,
         headerTintColor: "#fff",
         tabBarActiveTintColor: "#FFF",
         tabBarStyle: {
-          borderTopWidth: 2,
+          borderTopWidth: 1,
           backgroundColor: "#000",
           height: 90,
         },

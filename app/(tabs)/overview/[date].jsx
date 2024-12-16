@@ -1,8 +1,10 @@
-import { Stack, usePathname } from "expo-router";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Stack, usePathname, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const DatePreview = () => {
+  const router = useRouter();
   const date = usePathname().split("/")[2];
 
   //////////// STATE VARIABLES ////////////
@@ -25,6 +27,23 @@ const DatePreview = () => {
   };
 
   //////////// USE EFFECTS ////////////
+  const handleRemove = async () => {
+    const response = await fetch(`http://localhost:3000/day/${day.id}`, {
+      method: "DELETE",
+    });
+
+    const data1 = await response.json();
+
+    if (data1.error) {
+      alert(data1.error);
+      return;
+    }
+
+    alert("Thought deleted!");
+    router.back();
+  };
+
+  //////////// USE EFFECTS ////////////
   useEffect(() => {
     getDay();
   }, []);
@@ -35,6 +54,26 @@ const DatePreview = () => {
 
       <View style={styles.container}>
         <Text style={styles.text}>{day.thought}</Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Pressable
+          style={({ pressed }) => [
+            { opacity: pressed ? 0.8 : 1.0 },
+            { backgroundColor: "#e02e22" },
+            styles.button,
+          ]}
+          onPress={() => {
+            handleRemove();
+          }}
+        >
+          <Text style={styles.buttonText}>Remove</Text>
+          <MaterialCommunityIcons
+            name="delete-outline"
+            size={32}
+            color="#8a1e16"
+          />
+        </Pressable>
       </View>
     </>
   );
@@ -59,5 +98,27 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     fontSize: 60,
     height: "calc(100vh - 180)",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "start",
+    height: 120,
+    backgroundColor: "#000",
+    padding: 10,
+  },
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 170,
+    height: 60,
+    borderRadius: 12,
+    gap: 15,
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: "Inter_600SemiBold",
+    color: "#FFF",
   },
 });

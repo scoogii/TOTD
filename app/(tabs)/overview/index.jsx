@@ -59,7 +59,7 @@ const OverviewIndex = () => {
           todayTextColor: "#81add6",
           textDayHeaderFontSize: 14,
           textDayFontSize: 16,
-          textMonthFontSize: 24,
+          textMonthFontSize: 18,
           textDayFontWeight: "bold",
           textSectionTitleColor: "#81add6",
         }}
@@ -79,11 +79,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#transparent",
-  },
-  text: {
-    color: "#FFF",
-    fontFamily: "Inter_600SemiBold",
-    fontSize: 32,
   },
 });
 
