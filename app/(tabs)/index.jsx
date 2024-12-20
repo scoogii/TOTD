@@ -19,7 +19,6 @@ const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
 
   //////////// STATE VARIABLES ////////////
-  const [today, setToday] = useState({});
   const [text, setText] = useState("");
 
   //////////// HANDLERS ////////////
@@ -35,7 +34,7 @@ const Index = () => {
       return;
     }
 
-    setToday(data1[0]);
+    setText(data1[0].thought);
   };
 
   const handleKeyDown = (e) => {
@@ -142,7 +141,7 @@ const Index = () => {
             onKeyPress={(e) => {
               handleKeyDown(e);
             }}
-            value={today ? today.thought : text}
+            value={text}
             returnKeyType="done"
           />
         </KeyboardAvoidingView>
