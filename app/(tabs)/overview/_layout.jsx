@@ -7,7 +7,6 @@ const OverviewLayout = () => {
         headerTransparent: true,
         headerStyle: {
           height: 90,
-          fontSize: 30,
           backgroundColor: "transparent",
         },
         headerShadowVisible: false,
@@ -17,8 +16,8 @@ const OverviewLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Overview",
-          headerShown: true,
+          headerTitle: "",
+          headerShown: false,
         }}
       />
     </Stack>
