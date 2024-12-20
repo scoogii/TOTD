@@ -31,7 +31,7 @@ const TabLayout = () => {
       screenOptions={{
         headerStyle: {
           backgroundColor: "#000",
-          borderBottomWidth: 1,
+          borderBottomWidth: 0,
           height: 90,
         },
         headerShadowVisible: false,
