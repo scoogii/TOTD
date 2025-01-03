@@ -9,9 +9,12 @@ const OverviewIndex = () => {
 
   //////////// FETCH ////////////
   const fetchDates = async () => {
-    const response = await fetch("http://localhost:3000/dates", {
-      method: "GET",
-    });
+    const response = await fetch(
+      "https://totd-backend-tpky.onrender.com/dates",
+      {
+        method: "GET",
+      },
+    );
 
     const data = await response.json();
 

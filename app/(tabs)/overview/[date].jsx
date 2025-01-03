@@ -12,9 +12,12 @@ const DatePreview = () => {
 
   //////////// FETCH ////////////
   const getDay = async () => {
-    const response = await fetch(`http://localhost:3000/day/${date}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `https://totd-backend-tpky.onrender.com/day/${date}`,
+      {
+        method: "GET",
+      },
+    );
 
     const data = await response.json();
 
@@ -28,9 +31,12 @@ const DatePreview = () => {
 
   //////////// USE EFFECTS ////////////
   const handleRemove = async () => {
-    const response = await fetch(`http://localhost:3000/day/${day.id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://totd-backend-tpky.onrender.com/day/${day.id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data1 = await response.json();
 

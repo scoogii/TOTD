@@ -23,9 +23,12 @@ const Index = () => {
 
   //////////// HANDLERS ////////////
   const getToday = async () => {
-    const response = await fetch(`http://localhost:3000/day/${currentDate}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `https://totd-backend-tpky.onrender.com/day/${currentDate}`,
+      {
+        method: "GET",
+      },
+    );
 
     const data1 = await response.json();
 
@@ -49,9 +52,12 @@ const Index = () => {
     }
 
     // Check if this day has already been logged
-    const response1 = await fetch(`http://localhost:3000/day/${currentDate}`, {
-      method: "GET",
-    });
+    const response1 = await fetch(
+      `https://totd-backend-tpky.onrender.com/day/${currentDate}`,
+      {
+        method: "GET",
+      },
+    );
 
     const data1 = await response1.json();
 
@@ -62,16 +68,19 @@ const Index = () => {
 
     // If empty, save as a new thought
     if (data1.length === 0) {
-      const response2 = await fetch("http://localhost:3000/day", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
+      const response2 = await fetch(
+        "https://totd-backend-tpky.onrender.com/day",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            date: currentDate,
+            thought: text,
+          }),
         },
-        body: JSON.stringify({
-          date: currentDate,
-          thought: text,
-        }),
-      });
+      );
 
       const data2 = await response2.json();
 
@@ -92,16 +101,19 @@ const Index = () => {
 
     // Else, edit thought for current day
     const id = data1[0].id;
-    const response3 = await fetch(`http://localhost:3000/day/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
+    const response3 = await fetch(
+      `https://totd-backend-tpky.onrender.com/day/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          date: currentDate,
+          thought: text,
+        }),
       },
-      body: JSON.stringify({
-        date: currentDate,
-        thought: text,
-      }),
-    });
+    );
 
     const data3 = await response3.json();
 
