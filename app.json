@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "431c66eb-92dd-4a72-9b8b-2e9263ec3d87"
+      }
+    },
+    "android": {
+      "package": "com.scoogii.totd"
+    },
+    "ios": {
+      "bundleIdentifier": "com.scoogii.totd"
+    }
+  }
+}
