@@ -52,7 +52,7 @@ const OverviewIndex = () => {
     <View style={styles.container}>
       <CalendarList
         style={{
-          paddingTop: 90,
+          paddingTop: 40,
         }}
         theme={{
           calendarBackground: "#000",
