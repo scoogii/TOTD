@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#FFF",
     fontFamily: "Inter_600SemiBold",
-    fontSize: 60,
+    fontSize: 32,
     height: "calc(100vh - 180)",
   },
   buttonContainer: {
