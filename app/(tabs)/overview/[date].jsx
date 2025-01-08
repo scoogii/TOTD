@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontFamily: "Inter_600SemiBold",
     fontSize: 32,
-    height: "calc(100vh - 180)",
+    height: "calc('100vh - 180')",
   },
   buttonContainer: {
     flexDirection: "row",

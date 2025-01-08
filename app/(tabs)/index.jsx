@@ -40,12 +40,6 @@ const Index = () => {
     setText(data1[0].thought);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.nativeEvent.key === "Enter") {
-      Keyboard.dismiss();
-    }
-  };
-
   const handleSave = async () => {
     if (!text) {
       Alert.alert("Empty thoughts 💭", "Write a thought before saving!");
@@ -150,11 +144,8 @@ const Index = () => {
             onEndEditing={() => {
               setText(text.trim());
             }}
-            onKeyPress={(e) => {
-              handleKeyDown(e);
-            }}
             value={text}
-            returnKeyType="done"
+            returnKeyType="return"
           />
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
