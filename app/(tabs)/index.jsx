@@ -135,7 +135,7 @@ const Index = () => {
           <TextInput
             multiline
             spellCheck={false}
-            maxLength={180}
+            maxLength={220}
             placeholder={"What's on your mind? 💭"}
             style={styles.text}
             onChangeText={(newText) => {
@@ -181,10 +181,10 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   text: {
-    textAlign: "center",
+    textAlign: "left",
     color: "#FFF",
     fontFamily: "Inter_600SemiBold",
-    fontSize: 28,
+    fontSize: 26,
     maxHeight: 500,
   },
   buttonContainer: {

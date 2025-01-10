@@ -97,15 +97,13 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     paddingLeft: 10,
     paddingRight: 10,
-    overflow: "auto",
   },
   text: {
-    textAlign: "center",
+    textAlign: "left",
     color: "#FFF",
     fontFamily: "Inter_600SemiBold",
-    fontSize: 28,
-    height: 500,
-    overflow: "auto",
+    fontSize: 26,
+    maxHeight: 500,
   },
   buttonContainer: {
     flexDirection: "row",
