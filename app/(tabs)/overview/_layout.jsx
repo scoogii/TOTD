@@ -4,10 +4,10 @@ const OverviewLayout = () => {
   return (
     <Stack
       screenOptions={{
-        headerTransparent: true,
         headerStyle: {
+          backgroundColor: "#000",
+          borderBottomWidth: 0,
           height: 90,
-          backgroundColor: "transparent",
         },
         headerShadowVisible: false,
         headerTintColor: "#fff",

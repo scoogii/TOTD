@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#FFF",
     fontFamily: "Inter_600SemiBold",
-    fontSize: 32,
+    fontSize: 28,
     maxHeight: 500,
   },
   buttonContainer: {
