@@ -37,6 +37,10 @@ const Index = () => {
       return;
     }
 
+    if (!data1[0].thought) {
+      setText("");
+    }
+
     setText(data1[0].thought);
   };
 
