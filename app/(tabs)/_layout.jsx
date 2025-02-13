@@ -56,7 +56,7 @@ const TabLayout = () => {
               style={{ marginTop: 30, height: 40 }}
             />
           ),
-          headerTitle: `Thought of the Day · ${date}`,
+          headerTitle: `✨ Thought of the Day ✨ · ${date}`,
         }}
       />
 
