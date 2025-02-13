@@ -9,8 +9,9 @@ import {
   Pressable,
   Text,
   Alert,
+  AppState,
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import moment from "moment";
@@ -20,6 +21,7 @@ const Index = () => {
 
   //////////// STATE VARIABLES ////////////
   const [text, setText] = useState("");
+  const appState = useRef(AppState.currentState);
 
   //////////// HANDLERS ////////////
   const getToday = async () => {
@@ -126,6 +128,14 @@ const Index = () => {
   useEffect(() => {
     getToday();
   }, []);
+
+  useEffect(() => {
+    if (appState.current === "active") {
+      if (currentDate !== moment(new Date()).format("YYYY-MM-DD")) {
+        setText("");
+      }
+    }
+  }, [appState]);
 
   return (
     <>
