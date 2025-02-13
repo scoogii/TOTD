@@ -15,9 +15,6 @@ import { useEffect, useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import moment from "moment";
-import * as Device from "expo-device";
-import * as Notifications from "expo-notifications";
-import Constants from "expo-constants";
 
 const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
@@ -42,8 +39,9 @@ const Index = () => {
       return;
     }
 
-    if (!data1[0].thought) {
+    if (!data1[0]) {
       setText("");
+      return;
     }
 
     setText(data1[0].thought);
