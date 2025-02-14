@@ -10,6 +10,9 @@
     },
     "ios": {
       "bundleIdentifier": "com.scoogii.totd"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
