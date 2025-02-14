@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import moment from "moment";
+import * as Notifications from "expo-notifications";
 
 const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
