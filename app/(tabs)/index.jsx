@@ -15,11 +15,13 @@ import { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import moment from "moment";
+import { useNavigation } from "@react-navigation/native";
 import * as Notifications from "expo-notifications";
 
 const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
   const appState = useRef(AppState.currentState);
+  const navigation = useNavigation();
 
   //////////// NOTIFICATIONS ////////////
   Notifications.setNotificationHandler({
@@ -39,8 +41,8 @@ const Index = () => {
     },
     trigger: {
       type: "daily",
-      hour: 17,
-      minute: 20,
+      hour: 19,
+      minute: 0,
       repeats: true,
     },
   });
@@ -54,9 +56,7 @@ const Index = () => {
       appState.current.match(/inactive|background/) &&
       nextAppState === "active"
     ) {
-      if (currentDate !== moment(new Date()).format("YYYY-MM-DD")) {
-        setText("");
-      }
+      getToday();
     }
 
     appState.current = nextAppState;
@@ -70,18 +70,18 @@ const Index = () => {
       },
     );
 
-    const data1 = await response.json();
+    const data = await response.json();
 
-    if (data1.error) {
-      alert(data1.error);
+    if (data.error) {
+      alert(data.error);
       return;
     }
 
-    if (!data1[0].thought) {
+    if (!data[0]) {
       setText("");
     }
 
-    setText(data1[0].thought);
+    setText(data[0].thought);
   };
 
   const handleSave = async () => {
@@ -165,8 +165,12 @@ const Index = () => {
 
   //////////// USE EFFECTS ////////////
   useEffect(() => {
-    getToday();
-  }, []);
+    const unsubscribe = navigation.addListener("focus", () => {
+      getToday();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   useEffect(() => {
     const subscription = AppState.addEventListener(
