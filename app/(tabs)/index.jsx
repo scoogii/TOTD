@@ -25,6 +25,19 @@ const Index = () => {
   const [text, setText] = useState("");
 
   //////////// HANDLERS ////////////
+  const handleAppStateChange = (nextAppState) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      if (currentDate !== moment(new Date()).format("YYYY-MM-DD")) {
+        setText("");
+      }
+    }
+
+    appState.current = nextAppState;
+  };
+
   const getToday = async () => {
     const response = await fetch(
       `https://totd-backend-tpky.onrender.com/day/${currentDate}`,
@@ -50,6 +63,7 @@ const Index = () => {
   const handleSave = async () => {
     if (!text) {
       Alert.alert("Empty thoughts 💭", "Write a thought before saving!");
+      return;
     }
 
     // Check if this day has already been logged
@@ -131,12 +145,15 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    if (appState.current !== "active") {
-      if (currentDate !== moment(new Date()).format("YYYY-MM-DD")) {
-        setText("");
-      }
-    }
-  }, [appState]);
+    const subscription = AppState.addEventListener(
+      "change",
+      handleAppStateChange,
+    );
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   return (
     <>

@@ -14,7 +14,7 @@ to enjoy.
 Since I've been capped because of the free plan from doing anymore builds:
 
 - [x] Uninstall the app on the simulator
-- [ ] `eas build --profile development-simulator --platform ios`
-- [ ] `npx expo start` and open via IOS simulator in the built app
+- [x] `eas build --profile development-simulator --platform ios`
+- [x] `npx expo start` and open via IOS simulator in the built app
 
 Check if there is any _native module not found_ error
