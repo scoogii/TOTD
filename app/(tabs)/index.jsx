@@ -35,14 +35,14 @@ const Index = () => {
   Notifications.scheduleNotificationAsync({
     content: {
       title: "Daily Thought Reminder",
-      body: "Don't forget to log your thought for today!",
+      body: "Don't forget to log your thought for today if you haven't!",
       sound: true,
       categoryIdentifier: "DAILY_REMINDER",
     },
     trigger: {
       type: Notifications.SchedulableTriggerInputTypes.DAILY,
-      hour: 19,
-      minute: 30,
+      hour: 16,
+      minute: 0,
       repeats: true,
     },
   });
