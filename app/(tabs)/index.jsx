@@ -40,9 +40,9 @@ const Index = () => {
       categoryIdentifier: "DAILY_REMINDER",
     },
     trigger: {
-      type: "daily",
+      type: Notifications.SchedulableTriggerInputTypes.DAILY,
       hour: 19,
-      minute: 0,
+      minute: 30,
       repeats: true,
     },
   });
