@@ -17,38 +17,34 @@ import { Feather } from "@expo/vector-icons";
 import moment from "moment";
 import { useNavigation } from "@react-navigation/native";
 import * as Notifications from "expo-notifications";
+import initialiseNotifications from "../../components/InitNotifications";
+
+initialiseNotifications();
 
 const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
   const appState = useRef(AppState.currentState);
   const navigation = useNavigation();
 
-  //////////// NOTIFICATIONS ////////////
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
-    }),
-  });
-
-  Notifications.scheduleNotificationAsync({
-    content: {
-      title: "Daily Thought Reminder",
-      body: "Don't forget to log your thought for today if you haven't!",
-      sound: true,
-      categoryIdentifier: "DAILY_REMINDER",
-    },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DAILY,
-      hour: 16,
-      minute: 0,
-      repeats: true,
-    },
-  });
-
   //////////// STATE VARIABLES ////////////
   const [text, setText] = useState("");
+
+  //////////// NOTIFICATIONS ////////////
+  text === "" &&
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "💭 Thought Reminder 💭",
+        body: "Don't forget to log your thought for today!",
+        sound: true,
+        categoryIdentifier: "DAILY_REMINDER",
+      },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DAILY,
+        hour: 16,
+        minute: 0,
+        repeats: true,
+      },
+    });
 
   //////////// HANDLERS ////////////
   const handleAppStateChange = (nextAppState) => {
@@ -128,6 +124,7 @@ const Index = () => {
       }
 
       Alert.alert("Success", "Thought has been logged!");
+
       return;
     }
 
