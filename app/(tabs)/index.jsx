@@ -21,6 +21,30 @@ const Index = () => {
   const currentDate = moment(new Date()).format("YYYY-MM-DD");
   const appState = useRef(AppState.currentState);
 
+  //////////// NOTIFICATIONS ////////////
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    }),
+  });
+
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Daily Thought Reminder",
+      body: "Don't forget to log your thought for today!",
+      sound: true,
+      categoryIdentifier: "DAILY_REMINDER",
+    },
+    trigger: {
+      type: "daily",
+      hour: 17,
+      minute: 20,
+      repeats: true,
+    },
+  });
+
   //////////// STATE VARIABLES ////////////
   const [text, setText] = useState("");
 
