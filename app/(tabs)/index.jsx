@@ -74,7 +74,7 @@ const Index = () => {
       return;
     }
 
-    if (!data) {
+    if (data.length === 0) {
       setText("");
       return;
     }
