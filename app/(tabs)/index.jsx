@@ -31,22 +31,20 @@ const Index = () => {
   const [text, setText] = useState("");
 
   //////////// NOTIFICATIONS ////////////
-  Notifications.scheduleNotificationAsync(
-    text === "" && {
-      content: {
-        title: "💭 Thought Reminder 💭",
-        body: "Don't forget to log your thought for today!",
-        sound: true,
-        categoryIdentifier: "DAILY_REMINDER",
-      },
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DAILY,
-        hour: 17,
-        minute: 30,
-        repeats: true,
-      },
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: "💭 Thought Reminder 💭",
+      body: "Don't forget to log your thought for today if you haven't!",
+      sound: true,
+      categoryIdentifier: "DAILY_REMINDER",
     },
-  );
+    trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.DAILY,
+      hour: 14,
+      minute: 0,
+      repeats: true,
+    },
+  });
 
   //////////// HANDLERS ////////////
   const handleAppStateChange = (nextAppState) => {
