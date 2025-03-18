@@ -31,8 +31,8 @@ const Index = () => {
   const [text, setText] = useState("");
 
   //////////// NOTIFICATIONS ////////////
-  text === "" &&
-    Notifications.scheduleNotificationAsync({
+  Notifications.scheduleNotificationAsync(
+    text === "" && {
       content: {
         title: "💭 Thought Reminder 💭",
         body: "Don't forget to log your thought for today!",
@@ -41,11 +41,12 @@ const Index = () => {
       },
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DAILY,
-        hour: 16,
-        minute: 0,
+        hour: 17,
+        minute: 30,
         repeats: true,
       },
-    });
+    },
+  );
 
   //////////// HANDLERS ////////////
   const handleAppStateChange = (nextAppState) => {
