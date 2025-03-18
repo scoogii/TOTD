@@ -41,7 +41,7 @@ const Index = () => {
     trigger: {
       type: Notifications.SchedulableTriggerInputTypes.DAILY,
       hour: 14,
-      minute: 0,
+      // minute: 0,
       repeats: true,
     },
   });
