@@ -18,6 +18,7 @@ import moment from "moment";
 import { useNavigation } from "@react-navigation/native";
 import * as Notifications from "expo-notifications";
 import initialiseNotifications from "../../components/InitNotifications";
+import Midnight from "react-native-midnight";
 
 initialiseNotifications();
 
@@ -73,8 +74,9 @@ const Index = () => {
       return;
     }
 
-    if (!data[0]) {
+    if (!data) {
       setText("");
+      return;
     }
 
     setText(data[0].thought);
@@ -177,6 +179,16 @@ const Index = () => {
 
     return () => {
       subscription.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    const listener = Midnight.addListener(() => {
+      currentDate = moment(new Date()).format("YYYY-MM-DD");
+    });
+
+    return () => {
+      listener.remove();
     };
   }, []);
 
